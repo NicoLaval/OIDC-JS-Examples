@@ -14,7 +14,11 @@ export const buildOidcConfiguration = (baseConfig) => {
   const configuration = {
     ...baseConfig,
     origin: window.location.origin,
-    config: { ...updatedBaseConfigConfig, authority, client_id },
+    config: {
+      ...updatedBaseConfigConfig,
+      authority: authority || updatedBaseConfigConfig.authority,
+      client_id: client_id || updatedBaseConfigConfig.client_id,
+    },
   };
   return configuration;
 };
